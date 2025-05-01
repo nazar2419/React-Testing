@@ -21,8 +21,8 @@ const Sandbox = () => {
   const handleSubmit = (e: React.FormEvent<HTMLButtonElement>) => {
     e.preventDefault();
     if (!validator.isEmail(signupInput.email)) {
-      return setError("Invalie email");
-    }
+         return setError('Invalid email');
+       }
     if (!validator.isLength(signupInput.password, { min: 5})) {
       return setError('Password must be at least 5 characters');
     }
@@ -37,13 +37,15 @@ const Sandbox = () => {
       <form className="space-y-4">
         {/* email input */}
         <div className="mb-3">
-          <label htmlFor="email">Email address</label>
-          <input 
-            type="email"
-            id="email"
+        <label htmlFor='email' className={labelStyles}>
+            Email address
+          </label>
+          <input
+            type='email'
+            id='email'
             value={signupInput.email}
             onChange={handleChange}
-            className={inputStyles} 
+            className={inputStyles}
           />
         </div>
         <div className="mb-3">
@@ -73,7 +75,7 @@ const Sandbox = () => {
         </div>
         {error && <p className="text-red-500 text-sm">{error}</p>}
         <button type="button" onClick={handleSubmit} className={buttonStyles}>
-          Sumbit
+          Submit
         </button>
       </form>
   </div>

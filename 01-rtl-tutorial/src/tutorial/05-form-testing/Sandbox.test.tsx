@@ -7,7 +7,7 @@ const getFormElements = () => {
     emailInputElement: screen.getByRole("textbox", { name: /email/i }),
     passwordInputElement: screen.getByLabelText("Password"),
     confirmPasswordInputElement: screen.getByLabelText(/confirm password/i),
-    submitButton: screen.getByRole("button", { name: /submit/i }),
+    submitButton: screen.getByRole('button', { name: /submit/i }),
   };
   return elements;
 };
@@ -53,14 +53,14 @@ describe("05-form-testing", () => {
     expect(confirmPasswordInputElement).toHaveValue("secret");
   });
   test("should show email error if email is invalid", async () => {
-    const { emailInputElement, submitButton } = getFormElements();
-
-    expect(screen.queryByText(/invalid email/i)).not.toBeInTheDocument();
-
-    await user.type(emailInputElement, "invalid");
-    await user.click(submitButton);
-
-    expect(screen.getByText(/invalid email/i)).toBeInTheDocument();
+   const { emailInputElement, submitButton } = getFormElements();
+   
+       expect(screen.queryByText(/invalid email/i)).not.toBeInTheDocument();
+   
+       await user.type(emailInputElement, 'invalid');
+       await user.click(submitButton);
+   
+       expect(screen.getByText(/invalid email/i)).toBeInTheDocument();
   });
   test("should show password error if password is less than 5 characters", async () => {
     const { emailInputElement, passwordInputElement, submitButton } =
@@ -110,7 +110,7 @@ describe("05-form-testing", () => {
     await user.type(confirmPasswordInputElement, "secret");
     await user.click(submitButton);
 
-    expect(screen.queryAllByText(/invalid email/i)).not.toBeInTheDocument();
+    expect(screen.queryByText(/invalid email/i)).not.toBeInTheDocument();
     expect(
       screen.queryByText(/password must be at least 5 characters/i)
     ).not.toBeInTheDocument();
