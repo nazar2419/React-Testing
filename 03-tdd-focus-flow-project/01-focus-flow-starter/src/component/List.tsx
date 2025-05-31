@@ -8,10 +8,14 @@ const List =({
   items: Item[];
   onDelete: (id: string) => void;
 }) => {
-  console.log(items)
   return (
     <section className='mt-8'>
-      List
+      <h2 className='text-xl font-semibold mb-2'>Flow Board</h2>
+      <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4'>
+        {items.map((item) => (
+          <ItemCard key={item.id} {...item} onDelete={onDelete} />
+        ))}
+      </div>
     </section>
   );
 }
