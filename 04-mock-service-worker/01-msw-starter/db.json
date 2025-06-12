@@ -1,0 +1,15 @@
+{
+  "posts": [
+    {
+      "id": "c9de",
+      "title": "node",
+      "likes": 13,
+      "like": 1
+    },
+    {
+      "id": "effa",
+      "title": "js",
+      "likes": 13
+    }
+  ]
+}
