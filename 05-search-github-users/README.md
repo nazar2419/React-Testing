@@ -38,7 +38,7 @@ npx tailwindcss init -p
 ```js
 /** @type {import('tailwindcss').Config} */
 export default {
-  content: ['./index.html', './src/**/*.{js,ts,jsx,tsx}'],
+  content: ["./index.html", "./src/**/*.{js,ts,jsx,tsx}"],
   theme: {
     extend: {},
   },
@@ -58,7 +58,7 @@ App.tsx
 
 ```tsx
 const App = () => {
-  return <h1 className='text-2xl font-bold'>Search Github Users</h1>;
+  return <h1 className="text-2xl font-bold">Search Github Users</h1>;
 };
 export default App;
 ```
@@ -112,15 +112,15 @@ npm i -D @types/node
 vite.config.ts
 
 ```ts
-import path from 'path';
-import react from '@vitejs/plugin-react';
-import { defineConfig } from 'vite';
+import path from "path";
+import react from "@vitejs/plugin-react";
+import { defineConfig } from "vite";
 
 export default defineConfig({
   plugins: [react()],
   resolve: {
     alias: {
-      '@': path.resolve(__dirname, './src'),
+      "@": path.resolve(__dirname, "./src"),
     },
   },
 });
@@ -141,16 +141,16 @@ npx shadcn@latest add button card chart input label skeleton toast
 App.tsx
 
 ```tsx
-import { Button } from '@/components/ui/button';
+import { Button } from "@/components/ui/button";
 const App = () => {
   return (
-    <div className='flex  items-center justify-center h-screen'>
-      <div className='flex gap-4'>
+    <div className="flex  items-center justify-center h-screen">
+      <div className="flex gap-4">
         <Button>Click me</Button>
-        <Button variant='outline' size='lg'>
+        <Button variant="outline" size="lg">
           Click me
         </Button>
-        <Button variant='destructive' size='sm'>
+        <Button variant="destructive" size="sm">
           Click me
         </Button>
       </div>
@@ -172,7 +172,7 @@ export default App;
 App.tsx
 
 ```tsx
-const [userName, setUserName] = useState('quincylarson');
+const [userName, setUserName] = useState("quincylarson");
 ```
 
 src/components/form/SearchForm.tsx
@@ -197,7 +197,7 @@ type UserProfileProps = {
 };
 
 const UserProfile = ({ userName }: UserProfileProps) => {
-  return <h1 className='text-2xl font-bold'>{userName}</h1>;
+  return <h1 className="text-2xl font-bold">{userName}</h1>;
 };
 export default UserProfile;
 ```
@@ -225,11 +225,11 @@ export default App;
 ## Search Form
 
 ```tsx
-import { Button } from '@/components/ui/button';
-import { Input } from '@/components/ui/input';
-import { Label } from '@/components/ui/label';
-import { type FormEvent } from 'react';
-import { useState } from 'react';
+import { Button } from "@/components/ui/button";
+import { Input } from "@/components/ui/input";
+import { Label } from "@/components/ui/label";
+import { type FormEvent } from "react";
+import { useState } from "react";
 
 type SearchFormProps = {
   userName: string;
@@ -241,8 +241,8 @@ const SearchForm = ({ userName, setUserName }: SearchFormProps) => {
 
   const handleSearch = (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    if (text === '') {
-      console.log('Please enter a username');
+    if (text === "") {
+      console.log("Please enter a username");
       return;
     }
     setUserName(text);
@@ -251,20 +251,20 @@ const SearchForm = ({ userName, setUserName }: SearchFormProps) => {
   return (
     <form
       onSubmit={handleSearch}
-      className='flex items-center gap-x-2 w-full lg:w-1/3 mb-8'
+      className="flex items-center gap-x-2 w-full lg:w-1/3 mb-8"
     >
-      <Label htmlFor='search' className='sr-only'>
+      <Label htmlFor="search" className="sr-only">
         Search
       </Label>
       <Input
-        type='text'
-        id='search'
+        type="text"
+        id="search"
         value={text}
         onChange={(e) => setText(e.target.value)}
-        placeholder='Search Github User...'
-        className='flex-grow bg-background'
+        placeholder="Search Github User..."
+        className="flex-grow bg-background"
       />
-      <Button type='submit'>Search</Button>
+      <Button type="submit">Search</Button>
     </form>
   );
 };
@@ -276,14 +276,14 @@ export default SearchForm;
 main.tsx
 
 ```tsx
-import { StrictMode } from 'react';
-import { createRoot } from 'react-dom/client';
-import './index.css';
-import App from './App.tsx';
+import { StrictMode } from "react";
+import { createRoot } from "react-dom/client";
+import "./index.css";
+import App from "./App.tsx";
 // import Toaster component
-import { Toaster } from '@/components/ui/toaster';
+import { Toaster } from "@/components/ui/toaster";
 
-createRoot(document.getElementById('root')!).render(
+createRoot(document.getElementById("root")!).render(
   <StrictMode>
     <App />
     <Toaster />
@@ -294,16 +294,16 @@ createRoot(document.getElementById('root')!).render(
 src/components/form/SearchForm.tsx
 
 ```tsx
-import { useToast } from '@/hooks/use-toast';
+import { useToast } from "@/hooks/use-toast";
 
 const SearchForm = ({ userName, setUserName }: SearchFormProps) => {
   const { toast } = useToast();
 
   const handleSearch = (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    if (text === '') {
+    if (text === "") {
       toast({
-        description: 'Please enter a valid username',
+        description: "Please enter a valid username",
       });
       return;
     }
@@ -374,14 +374,14 @@ import {
   InMemoryCache,
   HttpLink,
   ApolloLink,
-} from '@apollo/client';
+} from "@apollo/client";
 
 // Error handling middleware for Apollo Client
 // Provides detailed error information for both GraphQL and network errors
-import { onError } from '@apollo/client/link/error';
+import { onError } from "@apollo/client/link/error";
 
 // GitHub GraphQL API endpoint
-const GITHUB_GRAPHQL_API = 'https://api.github.com/graphql';
+const GITHUB_GRAPHQL_API = "https://api.github.com/graphql";
 
 // Configure error handling middleware
 // This will intercept and log any GraphQL or network errors
@@ -428,15 +428,15 @@ export default client;
 src/main.tsx
 
 ```tsx
-import { createRoot } from 'react-dom/client';
-import App from './App.tsx';
-import './index.css';
-import { Toaster } from '@/components/ui/toaster';
+import { createRoot } from "react-dom/client";
+import App from "./App.tsx";
+import "./index.css";
+import { Toaster } from "@/components/ui/toaster";
 // Apollo Provider
-import { ApolloProvider } from '@apollo/client';
-import client from './apolloClient';
+import { ApolloProvider } from "@apollo/client";
+import client from "./apolloClient";
 
-createRoot(document.getElementById('root')!).render(
+createRoot(document.getElementById("root")!).render(
   <ApolloProvider client={client}>
     <App />
     <Toaster />
@@ -449,7 +449,7 @@ createRoot(document.getElementById('root')!).render(
 src/queries.ts
 
 ```ts
-import { gql } from '@apollo/client';
+import { gql } from "@apollo/client";
 
 export const GET_USER = gql`
   query ($login: String!) {
@@ -540,9 +540,9 @@ export type UserData = {
 src/components/user/UserProfile.tsx
 
 ```tsx
-import { useQuery } from '@apollo/client';
-import { GET_USER } from '@/queries';
-import { UserData } from '@/types';
+import { useQuery } from "@apollo/client";
+import { GET_USER } from "@/queries";
+import { UserData } from "@/types";
 
 type UserProfileProps = {
   userName: string;
@@ -554,8 +554,8 @@ const UserProfile = ({ userName }: UserProfileProps) => {
   });
 
   if (loading) return <div>Loading...</div>;
-  if (error) return <h2 className='text-xl'>{error.message}</h2>;
-  if (!data) return <h2 className='text-xl'>User Not Found.</h2>;
+  if (error) return <h2 className="text-xl">{error.message}</h2>;
+  if (!data) return <h2 className="text-xl">User Not Found.</h2>;
 
   const {
     avatarUrl,
@@ -583,13 +583,13 @@ export default UserProfile;
 src/components/user/UserCard.tsx
 
 ```tsx
-import { Button } from '@/components/ui/button';
+import { Button } from "@/components/ui/button";
 import {
   Card,
   CardTitle,
   CardDescription,
   CardHeader,
-} from '@/components/ui/card';
+} from "@/components/ui/card";
 
 type UserCardProps = {
   avatarUrl: string;
@@ -599,20 +599,20 @@ type UserCardProps = {
 };
 const UserCard = ({ avatarUrl, name, bio, url }: UserCardProps) => {
   return (
-    <Card className='w-full lg:w-1/2 mb-8'>
-      <CardHeader className='flex-row gap-x-8 items-center'>
+    <Card className="w-full lg:w-1/2 mb-8">
+      <CardHeader className="flex-row gap-x-8 items-center">
         <img
           src={avatarUrl}
           alt={name}
-          className='w-36 h-36  rounded object-cover'
+          className="w-36 h-36  rounded object-cover"
         />
-        <div className='flex flex-col gap-y-2'>
-          <CardTitle>{name || 'Coding Addict'}</CardTitle>
+        <div className="flex flex-col gap-y-2">
+          <CardTitle>{name || "Coding Addict"}</CardTitle>
           <CardDescription>
-            {bio || 'Passionate about coding and technology.'}
+            {bio || "Passionate about coding and technology."}
           </CardDescription>
-          <Button asChild size='sm' className='w-1/2 mt-2'>
-            <a href={url} target='_blank' rel='noreferrer'>
+          <Button asChild size="sm" className="w-1/2 mt-2">
+            <a href={url} target="_blank" rel="noreferrer">
               Follow
             </a>
           </Button>
@@ -637,7 +637,7 @@ return (
 ## Stats Card
 
 ```tsx
-import { Card, CardTitle, CardDescription } from '../ui/card';
+import { Card, CardTitle, CardDescription } from "../ui/card";
 
 type StatsCardProps = {
   title: string;
@@ -647,7 +647,7 @@ type StatsCardProps = {
 function StatsCard({ title, count }: StatsCardProps) {
   return (
     <Card>
-      <div className='flex flex-row justify-between items-center p-6'>
+      <div className="flex flex-row justify-between items-center p-6">
         <CardTitle>{title}</CardTitle>
         <CardDescription>{count}</CardDescription>
       </div>
@@ -661,7 +661,7 @@ export default StatsCard;
 ## Stats Container
 
 ```tsx
-import StatsCard from './StatsCard';
+import StatsCard from "./StatsCard";
 
 type StatsContainerProps = {
   totalRepos: number;
@@ -674,11 +674,11 @@ const StatsContainer = (props: StatsContainerProps) => {
   const { totalRepos, followers, following, gists } = props;
 
   return (
-    <div className='grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-2 mb-8 '>
-      <StatsCard title='Total Repositories' count={totalRepos} />
-      <StatsCard title='Followers' count={followers} />
-      <StatsCard title='Following' count={following} />
-      <StatsCard title='Gists' count={gists} />
+    <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-2 mb-8 ">
+      <StatsCard title="Total Repositories" count={totalRepos} />
+      <StatsCard title="Followers" count={followers} />
+      <StatsCard title="Following" count={following} />
+      <StatsCard title="Gists" count={gists} />
     </div>
   );
 };
@@ -708,7 +708,7 @@ And once we are done with the Stats container, we can start working on the chart
 src/utils.ts
 
 ```ts
-import { Repository } from './types';
+import { Repository } from "./types";
 
 /**
  * Calculates the top 5 most forked repositories
@@ -821,7 +821,7 @@ UserProfile.tsx
 ```tsx
 {
   repositories.totalCount > 0 && (
-    <div className='grid md:grid-cols-2 gap-4'>
+    <div className="grid md:grid-cols-2 gap-4">
       <UsedLanguages repositories={repositories.nodes} />
       <PopularRepos repositories={repositories.nodes} />
       <ForkedRepos repositories={repositories.nodes} />
@@ -835,15 +835,15 @@ UserProfile.tsx
 components/charts/UsedLanguages.tsx
 
 ```tsx
-import { type Repository } from '@/types';
-import { Bar, BarChart, CartesianGrid, XAxis, YAxis } from 'recharts';
+import { type Repository } from "@/types";
+import { Bar, BarChart, CartesianGrid, XAxis, YAxis } from "recharts";
 import {
   ChartConfig,
   ChartContainer,
   ChartTooltip,
   ChartTooltipContent,
-} from '@/components/ui/chart';
-import { calculatePopularLanguages } from '@/utils';
+} from "@/components/ui/chart";
+import { calculatePopularLanguages } from "@/utils";
 
 const UsedLanguages = ({ repositories }: { repositories: Repository[] }) => {
   // Calculate popular languages
@@ -855,17 +855,17 @@ const UsedLanguages = ({ repositories }: { repositories: Repository[] }) => {
 
   const chartConfig = {
     language: {
-      label: 'Language',
-      color: '#2563eb',
+      label: "Language",
+      color: "#2563eb",
     },
   } satisfies ChartConfig;
   return (
     <div>
-      <h2 className='text-2xl font-semibold text-center mb-4'>
+      <h2 className="text-2xl font-semibold text-center mb-4">
         Used Languages
       </h2>
       {/* ChartContainer handles responsive sizing and theme variables */}
-      <ChartContainer config={chartConfig} className='h-100 w-full'>
+      <ChartContainer config={chartConfig} className="h-100 w-full">
         {/* BarChart is the main container for the bar chart visualization */}
         {/* accessibilityLayer adds ARIA labels for better screen reader support */}
         <BarChart accessibilityLayer data={popularLanguages}>
@@ -874,20 +874,20 @@ const UsedLanguages = ({ repositories }: { repositories: Repository[] }) => {
 
           {/* XAxis configures the horizontal axis showing language names */}
           <XAxis
-            dataKey='language'
+            dataKey="language"
             tickLine={false} // Removes tick marks
             tickMargin={10} // Adds spacing between labels and axis
           />
 
           {/* YAxis configures the vertical axis showing count values */}
-          <YAxis dataKey='count' />
+          <YAxis dataKey="count" />
 
           {/* ChartTooltip shows details when hovering over bars */}
           <ChartTooltip content={<ChartTooltipContent />} />
 
           {/* Bar component defines how each data point is rendered */}
           {/* Uses CSS variable for color and adds rounded corners */}
-          <Bar dataKey='count' fill='var(--color-language)' radius={4} />
+          <Bar dataKey="count" fill="var(--color-language)" radius={4} />
         </BarChart>
       </ChartContainer>
     </div>
@@ -902,15 +902,15 @@ export default UsedLanguages;
 components/charts/PopularRepos.tsx
 
 ```tsx
-import { type Repository } from '@/types';
-import { Bar, BarChart, CartesianGrid, XAxis, YAxis } from 'recharts';
+import { type Repository } from "@/types";
+import { Bar, BarChart, CartesianGrid, XAxis, YAxis } from "recharts";
 import {
   ChartConfig,
   ChartContainer,
   ChartTooltip,
   ChartTooltipContent,
-} from '@/components/ui/chart';
-import { calculateMostStarredRepos } from '@/utils';
+} from "@/components/ui/chart";
+import { calculateMostStarredRepos } from "@/utils";
 
 const PopularRepos = ({ repositories }: { repositories: Repository[] }) => {
   // Calculate most starred repositories and return array of {repo: string, stars: number}
@@ -919,16 +919,16 @@ const PopularRepos = ({ repositories }: { repositories: Repository[] }) => {
   // Configuration for the chart's styling and labels
   const chartConfig = {
     repo: {
-      label: 'Repository',
-      color: '#e11c47', // Red color for the bars
+      label: "Repository",
+      color: "#e11c47", // Red color for the bars
     },
   } satisfies ChartConfig;
 
   return (
     <div>
-      <h2 className='text-2xl font-semibold text-center mb-4'>Popular Repos</h2>
+      <h2 className="text-2xl font-semibold text-center mb-4">Popular Repos</h2>
       {/* ChartContainer: Custom wrapper component that handles responsive sizing and theme */}
-      <ChartContainer config={chartConfig} className='h-100 w-full'>
+      <ChartContainer config={chartConfig} className="h-100 w-full">
         {/* BarChart: Main chart component from recharts */}
         {/* accessibilityLayer adds ARIA labels for better screen reader support */}
         <BarChart accessibilityLayer data={popularRepos}>
@@ -938,14 +938,14 @@ const PopularRepos = ({ repositories }: { repositories: Repository[] }) => {
           {/* XAxis: Horizontal axis showing repository names */}
           {/* tickFormatter truncates long repository names to 10 characters */}
           <XAxis
-            dataKey='repo'
+            dataKey="repo"
             tickLine={false}
             tickMargin={10}
             tickFormatter={(value) => value.slice(0, 10)}
           />
 
           {/* YAxis: Vertical axis showing star counts */}
-          <YAxis dataKey='stars' />
+          <YAxis dataKey="stars" />
 
           {/* ChartTooltip: Custom tooltip component that appears on hover */}
           {/* ChartTooltipContent: Renders the actual content inside the tooltip */}
@@ -954,7 +954,7 @@ const PopularRepos = ({ repositories }: { repositories: Repository[] }) => {
           {/* Bar: The actual bar elements of the chart */}
           {/* fill uses CSS variable for consistent theming */}
           {/* radius adds rounded corners to the bars */}
-          <Bar dataKey='stars' fill='var(--color-repo)' radius={4} />
+          <Bar dataKey="stars" fill="var(--color-repo)" radius={4} />
         </BarChart>
       </ChartContainer>
     </div>
@@ -969,15 +969,15 @@ export default PopularRepos;
 components/charts/ForkedRepos.tsx
 
 ```tsx
-import { type Repository } from '@/types';
-import { Bar, BarChart, CartesianGrid, XAxis, YAxis } from 'recharts';
+import { type Repository } from "@/types";
+import { Bar, BarChart, CartesianGrid, XAxis, YAxis } from "recharts";
 import {
   ChartConfig,
   ChartContainer,
   ChartTooltip,
   ChartTooltipContent,
-} from '@/components/ui/chart';
-import { calculateMostForkedRepos } from '@/utils';
+} from "@/components/ui/chart";
+import { calculateMostForkedRepos } from "@/utils";
 
 const ForkedRepos = ({ repositories }: { repositories: Repository[] }) => {
   // Calculate most forked repositories and return array of {repo: string, count: number}
@@ -986,16 +986,16 @@ const ForkedRepos = ({ repositories }: { repositories: Repository[] }) => {
   // Define chart configuration for styling and labels
   const chartConfig = {
     repo: {
-      label: 'Repository',
-      color: '#facd12',
+      label: "Repository",
+      color: "#facd12",
     },
   } satisfies ChartConfig;
 
   return (
     <div>
-      <h2 className='text-2xl font-semibold text-center mb-4'>Forked Repos</h2>
+      <h2 className="text-2xl font-semibold text-center mb-4">Forked Repos</h2>
       {/* ChartContainer handles responsive sizing and theme variables */}
-      <ChartContainer config={chartConfig} className='h-100 w-full'>
+      <ChartContainer config={chartConfig} className="h-100 w-full">
         {/* BarChart is the main container for the bar chart visualization */}
         {/* accessibilityLayer adds ARIA labels for better screen reader support */}
         <BarChart accessibilityLayer data={mostForkedRepos}>
@@ -1004,7 +1004,7 @@ const ForkedRepos = ({ repositories }: { repositories: Repository[] }) => {
 
           {/* XAxis configures the horizontal axis */}
           <XAxis
-            dataKey='repo' // Uses 'repo' property from data for labels
+            dataKey="repo" // Uses 'repo' property from data for labels
             tickLine={true} // Shows small lines at each tick mark
             tickMargin={10} // Space between tick line and label
             axisLine={false} // Hides the main axis line
@@ -1012,14 +1012,14 @@ const ForkedRepos = ({ repositories }: { repositories: Repository[] }) => {
           />
 
           {/* YAxis configures the vertical axis, showing fork counts */}
-          <YAxis dataKey='count' />
+          <YAxis dataKey="count" />
 
           {/* ChartTooltip shows details when hovering over bars */}
           <ChartTooltip content={<ChartTooltipContent />} />
 
           {/* Bar component defines the actual bars in the chart */}
           {/* Uses CSS variable for color and rounded corners (radius) */}
-          <Bar dataKey='count' fill='var(--color-repo)' radius={4} />
+          <Bar dataKey="count" fill="var(--color-repo)" radius={4} />
         </BarChart>
       </ChartContainer>
     </div>
@@ -1034,7 +1034,7 @@ export default ForkedRepos;
 src/components/user/Loading.tsx
 
 ```tsx
-import { Skeleton } from '@/components/ui/skeleton';
+import { Skeleton } from "@/components/ui/skeleton";
 
 /**
  * Loading component that displays placeholder content while data is being fetched
@@ -1048,21 +1048,21 @@ const Loading = () => {
           - w-full: Full width on mobile
           - lg:w-1/2: Half width on large screens
           - mb-8: Bottom margin of 2rem */}
-      <Skeleton className='h-[194px] w-full lg:w-1/2 mb-8 rounded ' />
+      <Skeleton className="h-[194px] w-full lg:w-1/2 mb-8 rounded " />
 
       {/* Grid container for smaller skeletons
           - grid-cols-1: Single column on mobile
           - lg:grid-cols-2: 2 columns on large screens
           - xl:grid-cols-4: 4 columns on extra large screens
           - gap-2: Small gap between grid items */}
-      <div className='grid grid-cols-1 lg:grid-cols-2 xl:grid-cols-4 gap-2 mb-8'>
+      <div className="grid grid-cols-1 lg:grid-cols-2 xl:grid-cols-4 gap-2 mb-8">
         {/* Four identical skeleton items
             - h-[70px]: Fixed height of 70px
             - rounded: Rounded corners */}
-        <Skeleton className=' h-[70px] rounded' />
-        <Skeleton className=' h-[70px] rounded' />
-        <Skeleton className=' h-[70px] rounded' />
-        <Skeleton className=' h-[70px] rounded' />
+        <Skeleton className=" h-[70px] rounded" />
+        <Skeleton className=" h-[70px] rounded" />
+        <Skeleton className=" h-[70px] rounded" />
+        <Skeleton className=" h-[70px] rounded" />
       </div>
     </div>
   );
