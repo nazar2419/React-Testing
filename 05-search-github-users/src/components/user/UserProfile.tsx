@@ -3,6 +3,9 @@ import { GET_USER } from "@/queries";
 import { UserData } from "@/types";
 import UserCard from "./UserCard";
 import StatsContainer from "./StatsContainer";
+import PopularRepos from "@/charts/PopularRepos";
+import ForkedRepos from "@/charts/ForkedRepos";
+import UsedLanguages from "@/charts/UsedLanguages";
 
 type UserProfileProps = {
     userName: string;
@@ -35,9 +38,14 @@ const UserProfile = ({userName}: UserProfileProps) => {
                 followers={followers.totalCount}
                 following={following.totalCount}
                 gists={gists.totalCount}
-            >
-
-            </StatsContainer>
+            />
+            {repositories.totalCount > 0 && (
+                <div className="grid md:grid-cols-2 gap-4">
+                    <UsedLanguages repositories={repositories.nodes} />
+                    <PopularRepos repositories={repositories.nodes } />
+                    <ForkedRepos repositories={repositories.nodes} />
+                </div>
+            )}
         </div>
     );
 };

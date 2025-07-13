@@ -52,6 +52,7 @@ export const calculatePopularLanguages = (
   // Initialize a map to track how many times each language appears
   // Example: { "JavaScript": 5, "Python": 3, "TypeScript": 2 }
   const languageMap: { [key: string]: number } = {};
+
   repositories.forEach((repo) => {
     // Skip repositories with no languages
     if (repo.languages.edges.length === 0) {
