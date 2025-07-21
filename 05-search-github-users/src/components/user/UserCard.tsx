@@ -25,7 +25,7 @@ const UserCard = ({ avatarUrl, name, bio, url }: UserCardProps) => {
         <div className="flex flex-col gap-y-2">
           <CardTitle>{name || "Coding Addict"}</CardTitle>
           <CardDescription>
-            {bio || "Pasionate about coding and technology"}
+            {bio || "Passionate about coding and technology"}
           </CardDescription>
           <Button asChild size="sm" className="w-1/2 mt-2">
             <a href={url} target="_blank" rel="noreferrer">
