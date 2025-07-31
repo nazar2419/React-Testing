@@ -1,5 +1,5 @@
 import {render, screen} from "@testing-library/react";
-import ForkedRepos from "@/charts/ForkedRepos";
+import ForkedRepos from "@/components/charts/ForkedRepos";
 import { mockRepositories } from "./utils.test";
 // Mock the chart UI components to simplify testing
 // Replace complex chart containers with simple div elements

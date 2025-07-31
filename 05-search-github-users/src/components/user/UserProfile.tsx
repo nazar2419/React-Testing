@@ -3,9 +3,9 @@ import { GET_USER } from "@/queries";
 import { UserData } from "@/types";
 import UserCard from "./UserCard";
 import StatsContainer from "./StatsContainer";
-import PopularRepos from "@/charts/PopularRepos";
-import ForkedRepos from "@/charts/ForkedRepos";
-import UsedLanguages from "@/charts/UsedLanguages";
+import PopularRepos from "../charts/PopularRepos";
+import ForkedRepos from "../charts/ForkedRepos";
+import UsedLanguages from "../charts/UsedLanguages";
 import Loading from "./Loading";
 
 type UserProfileProps = {

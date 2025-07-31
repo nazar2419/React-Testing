@@ -33,7 +33,7 @@ export const handlers = [
             totalCount: 45,
             nodes: mockRepositories,
           },
-          follewers: {
+          followers: {
             totalCount: 234,
           },
           following: {
